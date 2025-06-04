@@ -34,14 +34,19 @@ def posicao_computador ():
     for i in range(5):
         while True:
             linha=random.randint(0,9)
-            coluna=random.randint(0,9)
-            
-            if tabuleiro_humano[linha][coluna] == "🌊":
-                tabuleiro_humano[linha][coluna] = "⛵"
+            coluna=random.randint(0,9)  
+            if tabuleiro_computador[linha][coluna] == "🌊":
+                tabuleiro_computador[linha][coluna] = "⛵"
                 break
             else:
                 print("Indisponível")  
 
+def ataque()
+
+
 posicao()
 exibir_tabuleiro(tabuleiro_humano)
+posicao_computador()
+exibir_tabuleiro(tabuleiro_computador, ocultar=True)
+
         
