@@ -18,6 +18,10 @@ tabuleiro_computador = criar_tabuleiro()
 exibir_tabuleiro("Humano", tabuleiro_humano)
 exibir_tabuleiro("Computador", tabuleiro_computador)
 
+restante_humano= 5
+restente_computador=5
 
-
-
+def posicao ():
+    print("Escolha a posição das suas embarcações ")
+    for i in range(5):
+        
