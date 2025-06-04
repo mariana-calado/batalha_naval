@@ -43,6 +43,5 @@ def posicao_computador():
 
 posicao()
 posicao_computador()
-
 exibir_tabuleiro("Humano", tabuleiro_humano)
 exibir_tabuleiro("Computador", tabuleiro_computador, ocultar=True)  

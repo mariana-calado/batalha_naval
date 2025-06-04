@@ -5,15 +5,20 @@ tabuleiro_computador=[['🌊' for _ in range(10)] for _ in range(10)]
 exibir_computador=[['🌊' for _ in range(10)] for _ in range(10)]
 exibir_humano=[['🌊' for _ in range(10)] for _ in range(10)]
 
-def exibir_tabuleiro(tabuleiro):
-    for linha in tabuleiro:
-        print(" ".join(linha))
+def exibir_tabuleiro(jogador, tabuleiro, ocultar=False):
+    print("    " + "  ".join(str(i) for i in range(10)))
+    for i, linha in enumerate(tabuleiro):
+        if ocultar:
+            print(f"{i}  " + " ".join(["🌊" if celula == "⛵" else celula for celula in linha]))
+        else:
+            print(f"{i}  " + " ".join(linha))
     print()
 
 restante_humano= 5
 restante_computador=5
 
 def posicao ():
+    exibir_tabuleiro("Tabuleiro", tabuleiro_humano)  
     print("Escolha a posição das suas embarcações ")
     for i in range(5):
         while True:
@@ -37,8 +42,6 @@ def posicao_computador ():
             if tabuleiro_computador[linha][coluna] == "🌊":
                 tabuleiro_computador[linha][coluna] = "⛵"
                 break
-            else:
-                print("Indisponível")  
 
 def ataque():
     while True:
