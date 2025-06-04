@@ -17,8 +17,31 @@ restente_computador=5
 def posicao ():
     print("Escolha a posição das suas embarcações ")
     for i in range(5):
-        
-        linha=int(input("Escolha a linha "))
-        coluna=int(input("Escolha a coluna "))
-        
+        while True:
+            linha=int(input("Escolha a linha "))
+            coluna=int(input("Escolha a coluna "))
+            
+            if 0<=linha < 10 and 0<= coluna < 10:
+                if tabuleiro_humano[linha][coluna] == "🌊":
+                    tabuleiro_humano[linha][coluna] = "⛵"
+                    break
+                else:
+                    print("Indisponível")
+            else:
+                print("Fora dos limites")  
+
+def posicao_computador ():
+    for i in range(5):
+        while True:
+            linha=random.randint(0,9)
+            coluna=random.randint(0,9)
+            
+            if tabuleiro_humano[linha][coluna] == "🌊":
+                tabuleiro_humano[linha][coluna] = "⛵"
+                break
+            else:
+                print("Indisponível")  
+
+posicao()
+exibir_tabuleiro(tabuleiro_humano)
         
