@@ -40,15 +40,6 @@ def posicao_computador ():
             else:
                 print("Indisponível")  
 
-    linha=int(input("Escolha a linha do ataque"))
-    coluna=int(input("Escolha a coluna do ataque"))
-    if tabuleiro_computador[linha][coluna]=="⛵":
-        exibir=[linha][coluna]="X"
-        
-        print("Você acertou")
-    else:
-        print("Você errou")
-
 def ataque():
     while True:
             linha=int(input("Escolha a linha do ataque "))
@@ -91,6 +82,7 @@ posicao()
 posicao_computador()
 exibir_tabuleiro(tabuleiro_humano)
 exibir_tabuleiro(tabuleiro_computador)
+
 
 
 
