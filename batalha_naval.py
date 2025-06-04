@@ -1,8 +1,5 @@
 import random
 
-linha = 10
-coluna = 10
-
 def criar_tabuleiro(tamanho=10):
     return [['🌊' for _ in range(tamanho)] for _ in range(tamanho)]
 
@@ -25,3 +22,6 @@ def posicao ():
     print("Escolha a posição das suas embarcações ")
     for i in range(5):
         
+        linha=int(input("Escolha a linha "))
+        coluna=int(input("Escolha a coluna "))
+        S
