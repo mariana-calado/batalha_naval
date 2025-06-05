@@ -22,8 +22,8 @@ def posicao ():
     print("Escolha a posição das suas embarcações ")
     for i in range(5):
         while True:
-            linha=int(input("Escolha a linha "))
-            coluna=int(input("Escolha a coluna "))
+            linha=int(input("Escolha a linha: "))
+            coluna=int(input("Escolha a coluna: "))
             
             if 0<=linha < 10 and 0<= coluna < 10:
                 if tabuleiro_humano[linha][coluna] == "🌊":
@@ -44,15 +44,17 @@ def posicao_computador ():
                 break
 
 def ataque():
+    global restante_computador
     while True:
-            linha=int(input("Escolha a linha do ataque "))
-            coluna=int(input("Escolha a coluna do ataque "))
+            linha=int(input("Escolha a linha do ataque: "))
+            coluna=int(input("Escolha a coluna do ataque: "))
 
             if 0<=linha < 10 and 0<= coluna < 10:
                 if tabuleiro_computador[linha][coluna] == "⛵":
                     tabuleiro_computador[linha][coluna] = "X"
                     exibir_computador[linha][coluna]="X"
                     restante_computador-=1
+                    print(restante_computador)
                     print("Acertou")
                 elif tabuleiro_computador[linha][coluna] == "🌊":
                     tabuleiro_computador[linha][coluna] = "X"
@@ -65,7 +67,8 @@ def ataque():
                 print("Fora dos limites do mapa! 🗺️")
 
 def ataque_computador():
-        while True:
+    global restante_humano
+    while True:
             linha=random.randint(0,9)
             coluna=random.randint(0,9) 
 
@@ -74,6 +77,7 @@ def ataque_computador():
                     tabuleiro_humano[linha][coluna] = "X"
                     exibir_humano[linha][coluna]="X"
                     restante_humano-=1
+                    print(restante_humano)
                     print("O computador acertou")
                 elif tabuleiro_humano[linha][coluna] == "🌊":
                     tabuleiro_humano[linha][coluna] = "X"
@@ -82,8 +86,9 @@ def ataque_computador():
 posicao()
 posicao_computador()
 exibir_tabuleiro(tabuleiro_humano)
+exibir_tabuleiro(tabuleiro_computador)
+ataque()
 exibir_tabuleiro(tabuleiro_computador, ocultar=True)
-
 
 
 
