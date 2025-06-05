@@ -52,7 +52,7 @@ def ataque():
                 if tabuleiro_computador[linha][coluna] == "⛵":
                     tabuleiro_computador[linha][coluna] = "X"
                     exibir_computador[linha][coluna]="X"
-                    restante_computador=-1
+                    restante_computador-=1
                     print("Acertou")
                 elif tabuleiro_computador[linha][coluna] == "🌊":
                     tabuleiro_computador[linha][coluna] = "X"
@@ -73,7 +73,7 @@ def ataque_computador():
                 if tabuleiro_humano[linha][coluna] == "⛵":
                     tabuleiro_humano[linha][coluna] = "X"
                     exibir_humano[linha][coluna]="X"
-                    restante_humano=-1
+                    restante_humano-=1
                     print("O computador acertou")
                 elif tabuleiro_humano[linha][coluna] == "🌊":
                     tabuleiro_humano[linha][coluna] = "X"
@@ -84,7 +84,7 @@ def ataque_computador():
 posicao()
 posicao_computador()
 exibir_tabuleiro(tabuleiro_humano)
-exibir_tabuleiro(tabuleiro_computador)
+exibir_tabuleiro(tabuleiro_computador, ocultar=True)
 
 
 
