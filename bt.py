@@ -68,27 +68,47 @@ def ataque():
 
 def ataque_computador():
     global restante_humano
-    while True:
-            linha=random.randint(0,9)
-            coluna=random.randint(0,9) 
+    linha=random.randint(0,9)
+    coluna=random.randint(0,9) 
 
-            if 0<=linha < 10 and 0<= coluna < 10:
-                if tabuleiro_humano[linha][coluna] == "⛵":
-                    tabuleiro_humano[linha][coluna] = "X"
-                    exibir_humano[linha][coluna]="X"
-                    restante_humano-=1
-                    print(restante_humano)
-                    print("O computador acertou")
-                elif tabuleiro_humano[linha][coluna] == "🌊":
-                    tabuleiro_humano[linha][coluna] = "X"
-                    print("O computador errou")
+    if 0<=linha < 10 and 0<= coluna < 10:
+        if tabuleiro_humano[linha][coluna] == "⛵":
+            tabuleiro_humano[linha][coluna] = "X"
+            exibir_humano[linha][coluna]="X"
+            restante_humano-=1
+            print(restante_humano)
+            print("O computador acertou")
+        elif tabuleiro_humano[linha][coluna] == "🌊":
+            tabuleiro_humano[linha][coluna] = "X"
+            print("O computador errou")
+        
+def verificar_vitoria(humano,computador):
+    if humano==0:
+        print("O computador venceu")
+        return True
+    elif computador==0:
+        print("Você venceu")
+        return True
+    else:
+        return False
+
+
+
+#Jogo:
 
 posicao()
 posicao_computador()
-exibir_tabuleiro(tabuleiro_humano)
-exibir_tabuleiro(tabuleiro_computador)
-ataque()
-exibir_tabuleiro(tabuleiro_computador, ocultar=True)
+while True:
+
+    exibir_tabuleiro(tabuleiro_computador)
+    exibir_tabuleiro(tabuleiro_humano)
+
+    ataque()
+    ataque_computador()
+    
+    if verificar_vitoria(restante_humano,restante_computador):
+        break
+    
 
 
 
