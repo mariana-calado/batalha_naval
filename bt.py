@@ -19,11 +19,13 @@ restante_computador=5
 
 def posicao ():
     exibir_tabuleiro(tabuleiro_humano)  
-    print("Escolha a posição das suas embarcações ")
+    print("Escolha a posição das suas 5 embarcações! ⛵")
+    print('')
     for i in range(5):
         while True:
-            linha=int(input("Escolha a linha: "))
-            coluna=int(input("Escolha a coluna: "))
+            linha=int(input("Escolha a linha que deseja: "))
+            coluna=int(input("Escolha a coluna que deseja: "))
+            print('')
             
             if 0<=linha < 10 and 0<= coluna < 10:
                 if tabuleiro_humano[linha][coluna] == "🌊":
@@ -44,50 +46,50 @@ def posicao_computador ():
                 break
 
 def ataque():
-    global restante_computador
+    restante_computador = 5
     while True:
             linha=int(input("Escolha a linha do ataque: "))
             coluna=int(input("Escolha a coluna do ataque: "))
 
             if 0<=linha < 10 and 0<= coluna < 10:
                 if tabuleiro_computador[linha][coluna] == "⛵":
-                    tabuleiro_computador[linha][coluna] = "X"
-                    exibir_computador[linha][coluna]="X"
+                    tabuleiro_computador[linha][coluna] = "💥"
+                    exibir_computador[linha][coluna]="💥"
                     restante_computador-=1
                     print(restante_computador)
-                    print("Acertou")
+                    print("Você acertou a embarcação inimiga! 😁")
                 elif tabuleiro_computador[linha][coluna] == "🌊":
-                    tabuleiro_computador[linha][coluna] = "X"
-                    print("Errou")
+                    tabuleiro_computador[linha][coluna] = "❌"
+                    print("Você errou! Mas não desista 💪")
                 else:
-                    print("Já atacou essa posição")
+                    print("Você já atacou essa posição!")
                     continue
                 break
             else:
                 print("Fora dos limites do mapa! 🗺️")
 
 def ataque_computador():
-    global restante_humano
+    restante_humano = 5
     linha=random.randint(0,9)
     coluna=random.randint(0,9) 
 
     if 0<=linha < 10 and 0<= coluna < 10:
         if tabuleiro_humano[linha][coluna] == "⛵":
-            tabuleiro_humano[linha][coluna] = "X"
-            exibir_humano[linha][coluna]="X"
+            tabuleiro_humano[linha][coluna] = "💥"
+            exibir_humano[linha][coluna]="💥"
             restante_humano-=1
             print(restante_humano)
-            print("O computador acertou")
+            print("O computador acertou sua embarcação! 😬")
         elif tabuleiro_humano[linha][coluna] == "🌊":
-            tabuleiro_humano[linha][coluna] = "X"
-            print("O computador errou")
+            tabuleiro_humano[linha][coluna] = "❌"
+            print("O computador errou sua embarcação! 😰")
         
 def verificar_vitoria(humano,computador):
     if humano==0:
-        print("O computador venceu")
+        print("O computador venceu a partida! 🏆")
         return True
     elif computador==0:
-        print("Você venceu")
+        print("Você venceu a partida! Parabéns! 🏆")
         return True
     else:
         return False
@@ -98,8 +100,8 @@ def verificar_vitoria(humano,computador):
 
 posicao()
 posicao_computador()
-while True:
 
+while True:
     exibir_tabuleiro(tabuleiro_computador)
     exibir_tabuleiro(tabuleiro_humano)
 
