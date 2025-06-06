@@ -22,7 +22,9 @@ def exibir_tabuleiro(tabuleiro, ocultar=False):
 
 def posicao():
     exibir_tabuleiro(tabuleiro_humano)
+    time.sleep(1.5)
     print("Escolha a posição das suas 5 embarcações! ⛵\n")
+    time.sleep(1.5)
     for _ in range(5):
         while True:
             linha = int(input("Escolha a linha que deseja: "))
@@ -112,19 +114,37 @@ posicao()
 posicao_computador()
 
 while True:
+    time.sleep(1.5)
+
     print("\nRodada Atual:")
     print('')
+
+    time.sleep(1.5)
+
     tabuleiros_lado(tabuleiro_humano, exibir_computador, ocultar_tab2=True)
 
+    time.sleep(1.5)
 
     ataque(estado)
+
     if verificar_vitoria(estado):
         break
+
+    time.sleep(1.5)
 
     ataque_computador(estado)
+
     if verificar_vitoria(estado):
         break
 
+    time.sleep(1.5)
+
     print(f"\n📊 Embarcações restantes:")
+
+    time.sleep(1.5)
+
     print(f"👤 Você: {estado['restante_humano']} embarcações")
+    
+    time.sleep(1.5)
+
     print(f"💻 Computador: {estado['restante_computador']} embarcações\n")
