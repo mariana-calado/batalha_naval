@@ -86,8 +86,8 @@ def ataque_computador(estado):
             print("O computador errou sua embarcação! 😰")
             break
         
-def exibir_tabuleiros_lado_a_lado(tab1, tab2, ocultar_tab2=False):
-    print("SEU TABULEIRO" + " " * 34 + "TABULEIRO DO COMPUTADOR")
+def tabuleiros_lado(tab1, tab2, ocultar_tab2=False):
+    print("Seu Tabuleiro:" + " " * 34 + "Tabuleiro do computador:")
     cabecalho = "     " + "   ".join(str(i) for i in range(10)) + "          " + "   ".join(str(i) for i in range(10))
     print(cabecalho)
     
@@ -114,7 +114,7 @@ posicao_computador()
 while True:
     print("\nRodada Atual:")
     print('')
-    exibir_tabuleiros_lado_a_lado(tabuleiro_humano, exibir_computador, ocultar_tab2=True)
+    tabuleiros_lado(tabuleiro_humano, exibir_computador, ocultar_tab2=True)
 
 
     ataque(estado)
