@@ -114,12 +114,12 @@ posicao()
 posicao_computador()
 
 while True:
-    time.sleep(1.5)
+    time.sleep(1)
 
     print("\nRodada Atual:")
     print('')
 
-    time.sleep(1.5)
+    time.sleep(0.5)
 
     tabuleiros_lado(tabuleiro_humano, exibir_computador, ocultar_tab2=True)
 
@@ -137,14 +137,14 @@ while True:
     if verificar_vitoria(estado):
         break
 
-    time.sleep(1.5)
+    time.sleep(0.5)
 
     print(f"\n📊 Embarcações restantes:")
 
-    time.sleep(1.5)
+    time.sleep(0.5)
 
     print(f"👤 Você: {estado['restante_humano']} embarcações")
     
-    time.sleep(1.5)
+    time.sleep(0.5)
 
     print(f"💻 Computador: {estado['restante_computador']} embarcações\n")
