@@ -14,8 +14,13 @@ def exibir_tabuleiro(tabuleiro, ocultar=False):
             print(f"{i}  " + " ".join(linha))
     print()
 
-restante_humano= 5
-restante_computador=5
+
+estado = {
+    'restante_humano': 5,
+    'restante_computador':5
+}
+
+
 
 def posicao ():
     exibir_tabuleiro(tabuleiro_humano)  
@@ -46,7 +51,6 @@ def posicao_computador ():
                 break
 
 def ataque():
-    restante_computador = 5
     while True:
             linha=int(input("Escolha a linha do ataque: "))
             coluna=int(input("Escolha a coluna do ataque: "))
@@ -55,11 +59,12 @@ def ataque():
                 if tabuleiro_computador[linha][coluna] == "⛵":
                     tabuleiro_computador[linha][coluna] = "💥"
                     exibir_computador[linha][coluna]="💥"
-                    restante_computador-=1
+                    estado['restante_computador'] -= 1
                     print(restante_computador)
                     print("Você acertou a embarcação inimiga! 😁")
                 elif tabuleiro_computador[linha][coluna] == "🌊":
                     tabuleiro_computador[linha][coluna] = "❌"
+                    exibir_computador[linha][coluna] = "❌"
                     print("Você errou! Mas não desista 💪")
                 else:
                     print("Você já atacou essa posição!")
@@ -77,18 +82,21 @@ def ataque_computador():
         if tabuleiro_humano[linha][coluna] == "⛵":
             tabuleiro_humano[linha][coluna] = "💥"
             exibir_humano[linha][coluna]="💥"
-            restante_humano-=1
+            estado['restante_humano'] -= 1
             print(restante_humano)
             print("O computador acertou sua embarcação! 😬")
         elif tabuleiro_humano[linha][coluna] == "🌊":
             tabuleiro_humano[linha][coluna] = "❌"
+            exibir_humano [linha][coluna] = "❌"
             print("O computador errou sua embarcação! 😰")
+        # elif tabuleiro_humano[linha][coluna] in ["💥"]:
+        #     continue
         
-def verificar_vitoria(humano,computador):
-    if humano==0:
+def verificar_vitoria(estado):
+    if estado['restante_humano'] == 0:
         print("O computador venceu a partida! 🏆")
         return True
-    elif computador==0:
+    elif estado['restante_computador'] == 0:
         print("Você venceu a partida! Parabéns! 🏆")
         return True
     else:
@@ -102,15 +110,27 @@ posicao()
 posicao_computador()
 
 while True:
+    print('Tabuleiro do computador: ')
+    print('')
     exibir_tabuleiro(tabuleiro_computador)
+    print('Seu tabuleiro: ')
+    print('')
     exibir_tabuleiro(tabuleiro_humano)
 
     ataque()
     ataque_computador()
     
-    if verificar_vitoria(restante_humano,restante_computador):
+    ataque(estado)
+    if verificar_vitoria(estado):
         break
-    
+
+    ataque_computador(estado)
+    if verificar_vitoria(estado):
+        break
+
+    print(f"\nEmbarcações restantes:")
+    print(f"👤 Você: {estado['restante_humano']} embarcações")
+    print(f"💻 Computador: {estado['restante_computador']} embarcações\n")
 
 
 

@@ -1,16 +1,18 @@
 import random
-import time
 
+# Criação dos tabuleiros
 tabuleiro_humano = [['🌊' for _ in range(10)] for _ in range(10)]
 tabuleiro_computador = [['🌊' for _ in range(10)] for _ in range(10)]
 exibir_computador = [['🌊' for _ in range(10)] for _ in range(10)]
 exibir_humano = [['🌊' for _ in range(10)] for _ in range(10)]
 
+# Estado do jogo
 estado = {
     'restante_humano': 5,
     'restante_computador': 5
 }
 
+# Função para exibir os tabuleiros
 def exibir_tabuleiro(tabuleiro, ocultar=False):
     print("    " + "  ".join(str(i) for i in range(10)))
     for i, linha in enumerate(tabuleiro):
@@ -20,6 +22,7 @@ def exibir_tabuleiro(tabuleiro, ocultar=False):
             print(f"{i}  " + " ".join(linha))
     print()
 
+# Colocar barcos do jogador
 def posicao():
     exibir_tabuleiro(tabuleiro_humano)
     print("Escolha a posição das suas 5 embarcações! ⛵\n")
@@ -37,6 +40,7 @@ def posicao():
             else:
                 print("Fora dos limites.")
 
+# Colocar barcos do computador
 def posicao_computador():
     for _ in range(5):
         while True:
@@ -46,9 +50,9 @@ def posicao_computador():
                 tabuleiro_computador[linha][coluna] = "⛵"
                 break
 
+# Ataque do jogador
 def ataque(estado):
     while True:
-        print('')
         linha = int(input("Escolha a linha do ataque: "))
         coluna = int(input("Escolha a coluna do ataque: "))
         print('')
@@ -69,7 +73,7 @@ def ataque(estado):
         else:
             print("Fora dos limites do mapa! 🗺️")
 
-
+# Ataque do computador
 def ataque_computador(estado):
     while True:
         linha = random.randint(0, 9)
@@ -85,19 +89,6 @@ def ataque_computador(estado):
             exibir_humano[linha][coluna] = "❌"
             print("O computador errou sua embarcação! 😰")
             break
-        
-def exibir_tabuleiros_lado_a_lado(tab1, tab2, ocultar_tab2=False):
-    print("SEU TABULEIRO" + " " * 34 + "TABULEIRO DO COMPUTADOR")
-    cabecalho = "     " + "   ".join(str(i) for i in range(10)) + "          " + "   ".join(str(i) for i in range(10))
-    print(cabecalho)
-    
-    for i in range(10):
-        linha_tab1 = "  ".join(tab1[i])
-        if ocultar_tab2:
-            linha_tab2 = "  ".join(["🌊" if cel == "⛵" else cel for cel in tab2[i]])
-        else:
-            linha_tab2 = "  ".join(tab2[i])
-        print(f"{i:<2}  {linha_tab1}     {i:<2}  {linha_tab2}")
 
 def verificar_vitoria(estado):
     if estado['restante_humano'] == 0:
@@ -112,10 +103,11 @@ posicao()
 posicao_computador()
 
 while True:
-    print("\nRodada Atual:")
-    print('')
-    exibir_tabuleiros_lado_a_lado(tabuleiro_humano, exibir_computador, ocultar_tab2=True)
+    print("\nTabuleiro do Computador:")
+    exibir_tabuleiro(exibir_computador, ocultar=True)
 
+    print("Seu Tabuleiro:")
+    exibir_tabuleiro(tabuleiro_humano)
 
     ataque(estado)
     if verificar_vitoria(estado):
