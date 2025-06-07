@@ -11,6 +11,10 @@ estado = {
     'restante_computador': 5
 }
 
+print('')
+print('   ⚔️ 🚢   BATALHA NAVAL   🚢 ⚔️')
+print('')
+
 def exibir_tabuleiro(tabuleiro, ocultar=False):
     print("    " + "  ".join(str(i) for i in range(10)))
     for i, linha in enumerate(tabuleiro):
