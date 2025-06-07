@@ -15,6 +15,49 @@ print('')
 print('   ⚔️ 🚢   BATALHA NAVAL   🚢 ⚔️')
 print('')
 
+def mostrar_menu():
+    while True:
+        print('1. Iniciar Jogo')
+        print('2. Ver Regras')
+        print('3. Sair')
+        escolha = input('\nDigite uma das opções (1-3): ')
+        print()
+
+        if escolha == '1':
+            return
+          
+        elif escolha == '2':
+
+            print('📜 REGRAS DO JOGO 📜\n')
+            print('🌊 O objetivo do jogo é afundar todas as embarcações inimigas antes que ele afunde as suas.\n')
+            
+            print('🚢 POSICIONAMENTO:')
+            print('- O tabuleiro tem o tamanho de 10 linhas por 10 colunas (10x10).')
+            print('- Você e o computador terão 5 embarcações cada, de tamanho 1 (ou seja, ocupam 1 célula).')
+            print('- Para posicionar cada embarcação, você informará duas coisas:')
+            print('   1️⃣  A linha (número entre 0 e 9).')
+            print('   2️⃣  A coluna (número entre 0 e 9).')
+            print('- As embarcações não podem ocupar o mesmo espaço, então preste atenção! ⛵\n')
+
+            print('🎯 ATAQUES:')
+            print('- Depois do posicionamento, o jogo começa em rodadas alternadas.')
+            print('- Em cada rodada, você informará:')
+            print('   🗣️  A linha e a coluna do local que deseja atacar.')
+            print('- O computador também atacará automaticamente na vez dele.')
+            print('- Um acerto será marcado com 💥 e um erro com ❌.\n')
+
+            print('🏁 VITÓRIA:')
+            print('- O primeiro a atingir todas as 5 embarcações do oponente vence a batalha! 🏆\n')
+
+            input('Pressione Enter para voltar ao menu...')
+
+        elif escolha == '3':
+            print('Saindo do jogo... Até a próxima! 👋')
+            exit()
+        else:
+            print('Opção inválida! Tente novamente.\n')
+
+
 def exibir_tabuleiro(tabuleiro, ocultar=False):
     print("    " + "  ".join(str(i) for i in range(10)))
     for i, linha in enumerate(tabuleiro):
@@ -113,6 +156,9 @@ def verificar_vitoria(estado):
         print("Você venceu a partida! Parabéns! 🏆")
         return True
     return False
+
+
+mostrar_menu()
 
 posicao()
 posicao_computador()
