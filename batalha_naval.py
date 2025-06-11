@@ -205,4 +205,4 @@ while True:
     
     time.sleep(0.5)
 
-    print(f"💻 Computador: {estado['restante_computador']} embarcações\n")
+    print(f"💻 Computador: {estado['restante_computador']} embarcações\n")  
