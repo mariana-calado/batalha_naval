@@ -151,9 +151,17 @@ def tabuleiros_lado(tab1, tab2, ocultar_tab2=False):
 def verificar_vitoria(estado):
     if estado['restante_humano'] == 0:
         print("O computador venceu a partida! 🏆")
+        print("")
+        print("Jogo desenvolvido por:")
+        print("- Mariana Cordeiro Calado Silva")
+        print("- Mateus Grabarski de Mantova")
         return True
     elif estado['restante_computador'] == 0:
         print("Você venceu a partida! Parabéns! 🏆")
+        print("")
+        print("Jogo desenvolvido por:")
+        print("- Mariana Cordeiro Calado Silva")
+        print("- Mateus Grabarski de Mantova")
         return True
     return False
 
