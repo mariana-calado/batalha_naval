@@ -128,11 +128,13 @@ def ataque_computador(estado):
             exibir_humano[linha][coluna] = "💥"
             estado['restante_humano'] -= 1
             print("O computador acertou sua embarcação! 😬")
+            return linha, coluna
             break
         elif tabuleiro_humano[linha][coluna] == "🌊":
             tabuleiro_humano[linha][coluna] = "❌"
             exibir_humano[linha][coluna] = "❌"
             print("O computador errou sua embarcação! 😰")
+            return linha, coluna
             break
         
 def tabuleiros_lado(tab1, tab2, ocultar_tab2=True):
@@ -195,7 +197,7 @@ while True:
     if verificar_vitoria(estado):
         break
 
-    print(f"O computador atacou a posição: Linha{linha_pc}, Coluna {coluna_pc}")
+    print(f"O computador atacou a posição: Linha {linha_pc}, Coluna {coluna_pc}")
     
     time.sleep(0.5)
 
