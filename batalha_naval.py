@@ -58,7 +58,7 @@ def mostrar_menu():
             print('Opção inválida! Tente novamente.\n')
 
 
-def exibir_tabuleiro(tabuleiro, ocultar=False):
+def exibir_tabuleiro(tabuleiro, ocultar=True):
     print("    " + "  ".join(str(i) for i in range(10)))
     for i, linha in enumerate(tabuleiro):
         if ocultar:
@@ -135,7 +135,7 @@ def ataque_computador(estado):
             print("O computador errou sua embarcação! 😰")
             break
         
-def tabuleiros_lado(tab1, tab2, ocultar_tab2=False):
+def tabuleiros_lado(tab1, tab2, ocultar_tab2=True):
     print("Seu Tabuleiro:" + " " * 34 + "Tabuleiro do computador:")
     cabecalho = "     " + "   ".join(str(i) for i in range(10)) + "          " + "   ".join(str(i) for i in range(10))
     print(cabecalho)
@@ -186,15 +186,17 @@ while True:
     ataque(estado)
 
     if verificar_vitoria(estado):
-        break
+        break   
 
     time.sleep(1.5)
 
-    ataque_computador(estado)
+    linha_pc, coluna_pc = ataque_computador(estado)
 
     if verificar_vitoria(estado):
         break
 
+    print(f"O computador atacou a posição: Linha{linha_pc}, Coluna {coluna_pc}")
+    
     time.sleep(0.5)
 
     print(f"\n📊 Embarcações restantes:")
