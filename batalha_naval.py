@@ -95,7 +95,7 @@ def posicao_computador():
                 tabuleiro_computador[linha][coluna] = "⛵"
                 break
 
-def ataque(estado):
+def ataque(estado, tabuleiro, linha, coluna):
     while True:
         print('')
         linha = int(input("Escolha a linha do ataque: "))
@@ -142,7 +142,7 @@ def tabuleiros_lado(tab1, tab2, ocultar_tab2=True):
     cabecalho = "     " + "   ".join(str(i) for i in range(10)) + "          " + "   ".join(str(i) for i in range(10))
     print(cabecalho)
     
-    for i in range(10):
+    for i in range(10): 
         linha_tab1 = "  ".join(tab1[i])
         if ocultar_tab2:
             linha_tab2 = "  ".join(["🌊" if cel == "⛵" else cel for cel in tab2[i]])
@@ -166,7 +166,6 @@ def verificar_vitoria(estado):
         print("- Mateus Grabarski de Mantova")
         return True
     return False
-
 
 mostrar_menu()
 
